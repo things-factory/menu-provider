@@ -11,5 +11,8 @@
   },
   "devDependencies": {
     "@things-factory/shell": "*"
+  },
+  "dependencies": {
+    "@things-factory/base-menu": "^0.0.1"
   }
 }

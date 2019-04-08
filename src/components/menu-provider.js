@@ -1,6 +1,6 @@
-import { updateBaseMenu } from '@things-factory/base-menu';
-import { store } from '@things-factory/shell';
-import { LitElement } from 'lit-element';
+import { updateBaseMenu } from '@things-factory/base-menu'
+import { store } from '@things-factory/shell'
+import { LitElement } from 'lit-element'
 
 export default class MenuProvider extends LitElement {
   static get properties() {
@@ -27,21 +27,23 @@ export default class MenuProvider extends LitElement {
     const menuObject = {}
     const menuList = []
     menus.forEach(m => {
-      if((m.menu_type || '').toUpperCase() === 'MENU') {
+      if ((m.menu_type || '').toUpperCase() === 'MENU') {
         menuObject[m.id] = Object.assign({}, menuObject[m.id], {
           rank: m.rank,
           name: m.title
         })
       } else {
-        if(!menuObject[m.parent_id]) 
+        if (!menuObject[m.parent_id])
           menuObject[m.parent_id] = {
-            children: []    
+            children: []
           }
 
         menuObject[m.parent_id].children.push({
           rank: m.rank,
           name: m.title,
-          pageName: m.routing
+          pageName: m.routing,
+          routingType: m.routing_type,
+          menuId: m.id
         })
       }
     })
