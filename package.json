@@ -9,10 +9,9 @@
     "build:dev": "webpack --config ./node_modules/@things-factory/shell/webpack.config.dev.js",
     "serve:dev": "webpack-dev-server --config ./node_modules/@things-factory/shell/webpack.config.dev.js"
   },
-  "devDependencies": {
-    "@things-factory/shell": "*"
-  },
+  "devDependencies": {},
   "dependencies": {
-    "@things-factory/base-menu": "*"
+    "@things-factory/base-menu": "*",
+    "@things-factory/shell": "*"
   }
 }
