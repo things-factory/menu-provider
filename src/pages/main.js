@@ -3,8 +3,6 @@ import { html, LitElement } from 'lit-element'
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import logo from '../../assets/images/hatiolab-logo.png'
 
-import '../components/menu-provider'
-
 class MenuProviderMain extends connect(store)(LitElement) {
   static get properties() {
     return {
@@ -18,8 +16,6 @@ class MenuProviderMain extends connect(store)(LitElement) {
         <img src=${logo}></img>
         <a href="base-menu-main">Move</a>
       </section>
-
-      <menu-provider></menu-provider>
     `
   }
 
