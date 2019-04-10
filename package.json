@@ -13,6 +13,6 @@
     "@things-factory/shell": "*"
   },
   "dependencies": {
-    "@things-factory/base-menu": "^0.0.1"
+    "@things-factory/base-menu": "*"
   }
 }
