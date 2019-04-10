@@ -32,8 +32,7 @@ function _convertMenu(menus = []) {
   menus.forEach(m => {
     if ((m.menu_type || '').toUpperCase() === 'MENU') {
       menuObject[m.id] = Object.assign({}, menuObject[m.id], {
-        rank: m.rank,
-        name: m.title
+        ...m
       })
     } else {
       if (!menuObject[m.parent_id])
@@ -42,11 +41,7 @@ function _convertMenu(menus = []) {
         }
 
       menuObject[m.parent_id].children.push({
-        rank: m.rank,
-        name: m.title,
-        pageName: m.routing,
-        routingType: m.routing_type,
-        menuId: m.id
+        ...m
       })
     }
   })
