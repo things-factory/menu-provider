@@ -43,7 +43,8 @@ export default class MenuProvider extends LitElement {
           name: m.title,
           pageName: m.routing,
           routingType: m.routing_type,
-          menuId: m.id
+          menuId: m.id,
+          idField: m.id_field
         })
       }
     })
