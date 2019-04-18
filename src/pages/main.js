@@ -1,9 +1,9 @@
-import { store } from '@things-factory/shell'
 import { html, LitElement } from 'lit-element'
 import { connect } from 'pwa-helpers/connect-mixin.js'
+import { store, PageView } from '@things-factory/shell'
 import logo from '../../assets/images/hatiolab-logo.png'
 
-class MenuProviderMain extends connect(store)(LitElement) {
+class MenuProviderMain extends connect(store)(PageView) {
   static get properties() {
     return {
       menuProvider: String
