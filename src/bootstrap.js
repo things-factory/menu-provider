@@ -1,25 +1,28 @@
-import { store } from '@things-factory/shell'
-import { updateBaseMenu } from '@things-factory/base-menu'
-import menuProvider from './reducers/main'
+import { auth, store } from '@things-factory/shell'
+import { updateMenu } from '@things-factory/base-menu'
 
 export default function bootstrap() {
-  store.addReducers({
-    menuProvider
-  })
-
-  fetchMenuInfo()
+  auth.on('signin', fetchMenus)
+  auth.on('signout', resetMenus)
 }
 
-function fetchMenuInfo() {
+function resetMenus() {
+  store.dispatch(updateMenu([]))
+}
+
+function fetchMenus() {
+  var state = store.getState()
+  var baseUrl = state.app.baseUrl
+
   var searchParam = new URLSearchParams()
   searchParam.append('query', JSON.stringify([{ name: 'hidden_flag', operator: 'is_not_true' }]))
 
-  fetch(`http://52.231.75.202/rest/menus/user_menus/STANDARD?${searchParam}`, {
+  fetch(`${baseUrl}/menus/user_menus/STANDARD?${searchParam}`, {
     credentials: 'include'
   }).then(res => {
     if (res.ok) {
       res.json().then(json => {
-        store.dispatch(updateBaseMenu(_convertMenu(json)))
+        store.dispatch(updateMenu(_convertMenu(json)))
         return json
       })
     }
