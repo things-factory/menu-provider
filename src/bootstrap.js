@@ -1,5 +1,5 @@
 import { auth, store } from '@things-factory/shell'
-import { updateMenu } from '@things-factory/base-menu'
+import { updateMenu } from '@things-factory/menu-base'
 
 export default function bootstrap() {
   auth.on('signin', fetchMenus)
